@@ -1,12 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Task } from 'src/app/interfaces/interfaces';
+import { TasksService } from '../../services/tasks.service';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
 
-  constructor() {}
+  tasks: Task[] = [];
+
+  habilitado = true;
+
+  constructor( private tasksService: TasksService) {}
+
+
+  ngOnInit() {
+    this.siguientes()
+  }
+
+  recargar( event?){
+      this.siguientes( event, true);
+      this.habilitado = true;
+      this.tasks = [];
+  }
+
+  siguientes( event?, pull: boolean = false){
+      
+    this.tasksService.getTasks( pull )
+      .subscribe( resp => {
+        console.log( resp );
+        this.tasks.push( ...resp.tasks );
+
+        if( event ){
+            event.target.complete();
+
+            if( resp.tasks.length === 0){
+              this.habilitado = false;
+            }
+        }
+      });
+  }
 
 }
