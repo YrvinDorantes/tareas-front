@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Task } from 'src/app/interfaces/interfaces';
+import { TasksService } from 'src/app/services/tasks.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task',
@@ -10,8 +12,13 @@ export class TaskComponent implements OnInit {
 
   @Input() task: Task = {};
 
-  constructor() { }
+  constructor(private tasksService: TasksService,
+              private route: Router) { }
 
   ngOnInit() {}
+
+  
+
+ 
 
 }

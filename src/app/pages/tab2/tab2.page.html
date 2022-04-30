@@ -1,17 +1,51 @@
-<ion-header [translucent]="true">
+<ion-header  no-border>
   <ion-toolbar>
+
+    <ion-avatar slot="end">
+      <img src="/assets/avatars/av-1.png" >
+    </ion-avatar>
+
     <ion-title>
-      Tab 2
+      Agregar tarea
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content >
+  <ion-card class="ion-align-self-center" >
+    <ion-item>
+      <ion-textarea [(ngModel)]="task.titulo"   placeholder="Escribe título de la tarea"></ion-textarea>
+   </ion-item>
+ 
+    <ion-item>
+      <ion-textarea  [(ngModel)]="task.subtitulo"   placeholder="Notas"></ion-textarea>
+   </ion-item>
+ 
+   <ion-item>
+     <ion-label >Prioridad</ion-label>
+     <ion-select [(ngModel)]="task.prioridad">
+       <ion-select-option value="Baja">Baja</ion-select-option>
+       <ion-select-option value="Media">Media</ion-select-option>
+       <ion-select-option value="Alta" selected>Alta</ion-select-option>
+      </ion-select>
+   </ion-item>
+  
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+   <ion-item>
+    <ion-icon name="calendar-outline"slot="start"></ion-icon>
+    <ion-label >Due Date </ion-label>
+    <ion-datetime [(ngModel)]="task.dateTask"  displayFormat="D MMM YYYY H:mm"></ion-datetime>
+  </ion-item>
+
+
+   
+
+   <ion-button (click)="crearTask()"
+                [disabled]="task.titulo.length < 1" 
+                class="ion-margin" expand="block">Agregar Tarea</ion-button>
+
+  </ion-card>
+ 
+
+
 </ion-content>

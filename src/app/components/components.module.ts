@@ -4,16 +4,19 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TaskComponent } from './task/task.component';
 
 import { IonicModule } from '@ionic/angular';
+import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.component';
 
 
 
 @NgModule({
   declarations: [
     TasksComponent,
-    TaskComponent
+    TaskComponent,
+    AvatarSelectorComponent
   ],
   exports:[
-    TasksComponent
+    TasksComponent,
+    AvatarSelectorComponent
   ],
   imports: [
     CommonModule,

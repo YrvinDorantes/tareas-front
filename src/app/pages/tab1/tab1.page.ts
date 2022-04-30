@@ -17,7 +17,12 @@ export class Tab1Page implements OnInit {
 
 
   ngOnInit() {
-    this.siguientes()
+    this.siguientes();
+
+    this.tasksService.nuevoTask
+    .subscribe( task => {
+      this.tasks.unshift( task );
+    });
   }
 
   recargar( event?){

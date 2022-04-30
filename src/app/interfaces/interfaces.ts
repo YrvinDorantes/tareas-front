@@ -11,7 +11,9 @@ export interface Task {
   titulo?: string;
   subtitulo?: string;
   prioridad?: string;
+  categoria?: string;
   estatus?: string;
+  dateTask?: string;
   usuario?: Usuario;
   created?: string;
 }
@@ -21,4 +23,5 @@ export interface Usuario {
   avatar?: string
   nombre?: string;
   email?: string;
+  password?: string;
 }
