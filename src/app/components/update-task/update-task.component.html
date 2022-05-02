@@ -1,10 +1,9 @@
 <ion-header  no-border>
   <ion-toolbar>
 
-   
-
+    <ion-icon (click)="closeModel()" slot="end" name="close"></ion-icon>
     <ion-title>
-      Agregar tarea
+      Actualizar Tarea
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,11 +11,11 @@
 <ion-content >
   <ion-card class="ion-align-self-center" >
     <ion-item>
-      <ion-textarea [(ngModel)]="task.titulo"   placeholder="Escribe título de la tarea"></ion-textarea>
+      <ion-textarea  [(ngModel)]="task.titulo"  placeholder="Escribe título de la tarea">  </ion-textarea>
    </ion-item>
  
     <ion-item>
-      <ion-textarea  [(ngModel)]="task.subtitulo"   placeholder="Notas"></ion-textarea>
+      <ion-textarea [(ngModel)]="task.subtitulo" placeholder="Notas"></ion-textarea>
    </ion-item>
  
    <ion-item>
@@ -27,23 +26,21 @@
        <ion-select-option value="Alta" selected>Alta</ion-select-option>
       </ion-select>
    </ion-item>
-  
+
 
    <ion-item>
     <ion-icon name="calendar-outline"slot="start"></ion-icon>
     <ion-label >Fecha </ion-label>
-    <ion-datetime [(ngModel)]="task.dateTask"  displayFormat="D MMM YYYY H:mm"></ion-datetime>
+    <ion-datetime  [(ngModel)]="task.dateTask" displayFormat="D MMM YYYY H:mm"></ion-datetime>
   </ion-item>
 
 
    
 
-   <ion-button (click)="crearTask()"
-                [disabled]="task.titulo.length < 1" 
-                class="ion-margin" expand="block">Agregar Tarea</ion-button>
+   <ion-button (click)="updateTask()"
+                [disabled]="task.titulo.length < 1"
+                class="ion-margin" expand="block">Actualizar Tarea</ion-button>
 
   </ion-card>
  
-
-
-</ion-content>
+ </ion-content>
