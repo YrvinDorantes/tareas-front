@@ -38,7 +38,6 @@ export class UsuarioService {
 
         this.http.post( `${ URL }/user/login`,data)
         .subscribe( resp => {
-            console.log(resp);
   
             if (resp['ok']){
                 this.guardarToken( resp['token']);
@@ -59,8 +58,6 @@ export class UsuarioService {
         return new Promise(resolve => {
           this.http.post( `${ URL }/user/create`, usuario)
           .subscribe( resp => {
-              console.log(resp);
-
               if (resp['ok']){
                 this.guardarToken( resp['token']);
                 resolve(true);

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TasksService } from 'src/app/services/tasks.service';
 import { Task } from '../../interfaces/interfaces';
 
 @Component({
@@ -10,10 +11,15 @@ export class TasksComponent implements OnInit {
 
   @Input() tasks: Task[] = [];
 
-  constructor() { }
+  constructor(private tasksService: TasksService) { }
 
   ngOnInit() {
-    console.log(this.tasks);
   }
+
+  deleteEvent(event: any) {
+    const itemIndex = this.tasks.findIndex(el => el === event);
+    this.tasks.splice(itemIndex, 1);
+  }
+
 
 }

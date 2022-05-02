@@ -19,6 +19,7 @@ export class Tab1Page implements OnInit {
 
 
   ngOnInit() {
+
     this.siguientes();
 
     this.tasksService.nuevoTask
@@ -37,9 +38,7 @@ export class Tab1Page implements OnInit {
       
     this.tasksService.getTasks( pull )
       .subscribe( resp => {
-        console.log( resp );
         this.tasks.push( ...resp.tasks );
-
         if( event ){
             event.target.complete();
 

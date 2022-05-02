@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { TasksService } from 'src/app/services/tasks.service';
 
@@ -7,6 +7,7 @@ import { TasksService } from 'src/app/services/tasks.service';
   providedIn: 'root'
 })
 export class UiServiceService {
+  
 
   constructor( private alertController: AlertController,
     private tasksService: TasksService,) { }
@@ -20,10 +21,10 @@ export class UiServiceService {
     await alert.present();
   }
 
-   async alertaEliminarTarea(task,accion) {
+   async alertaEliminarTarea(task,accion,mensaje,estatus) {
      await this.alertController.create({
       header: 'AVISO',
-      message: '¿Estás seguro de eliminar la tarea?',
+      message: mensaje,
       buttons: [
         {
           text: 'No',
@@ -34,9 +35,8 @@ export class UiServiceService {
         {
           text: 'Si',
           handler: () => {
-            task.estatus = 'Cancelado';
+            task.estatus = estatus;
             this.tasksService.updateTask(task, task._id );
-            window.location.reload();
           }
         }
       ]

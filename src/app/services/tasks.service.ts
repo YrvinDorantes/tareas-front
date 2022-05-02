@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, Output } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { RespuestaTasks, Task } from '../interfaces/interfaces';
@@ -10,10 +10,12 @@ const URL = environment.url;
   providedIn: 'root'
 })
 export class TasksService {
+  
 
   paginaTasks = 0;
 
   nuevoTask = new EventEmitter<Task>();
+  deleteTask = new EventEmitter<Task>();
 
 
 
@@ -44,6 +46,7 @@ export class TasksService {
             this.http.post( `${ URL }/tasks/`,task,{headers})
             .subscribe( resp => {
               this.nuevoTask.emit( resp['task']);
+              Ok: resp['task']
               resolve(true);
             });
         });
@@ -59,7 +62,7 @@ export class TasksService {
       return new Promise (resolve => {
         this.http.put( `${ URL }/tasks/${ id }`,task ,{headers})
         .subscribe( resp => {
-          this.nuevoTask.emit( resp['task']);
+          Ok: resp['task']
           resolve(true);
         });
     });

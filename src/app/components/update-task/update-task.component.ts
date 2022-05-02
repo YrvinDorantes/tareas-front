@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController,  NavController } from '@ionic/angular';
 import { Task } from 'src/app/interfaces/interfaces';
 import { TasksService } from 'src/app/services/tasks.service';
 
@@ -16,7 +16,8 @@ export class UpdateTaskComponent implements OnInit {
 
   constructor(private tasksService: TasksService,
                 private route: Router,
-                private modalController: ModalController) { }
+                private modalController: ModalController,
+                private navCtrl: NavController) { }
 
                 
 
@@ -26,9 +27,8 @@ export class UpdateTaskComponent implements OnInit {
 
   async updateTask(){
     console.log(this.task);
-    const creado = await this.tasksService.updateTask(this.task,this.task._id);
-
-    this.route.navigateByUrl('/main/tabs/tab1');
+    const actualizado = await this.tasksService.updateTask(this.task,this.task._id);
+    this.navCtrl.navigateRoot('/main/tabs/tab1', {animated: true});
     this.closeModel();
   }
 
