@@ -23,7 +23,6 @@ export class Tab2Page {
 
 
   async crearTask(){
-    console.log(this.task);
     const creado = await this.tasksService.crearTask(this.task);
 
     this.task = {
@@ -31,7 +30,7 @@ export class Tab2Page {
       subtitulo: '' ,
       prioridad: '',
       categoria: '',
-      estatus: '',
+      estatus: 'Pendiente',
       dateTask: ''
     };
 

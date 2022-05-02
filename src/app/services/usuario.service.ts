@@ -79,10 +79,6 @@ export class UsuarioService {
       this.token = await this.storage.get('token') || null;
     }
 
-
-    
-
-
     async validaToken(): Promise<boolean>{
 
       await this.cargarToken();
@@ -98,8 +94,6 @@ export class UsuarioService {
         const headers = new HttpHeaders({
           'x-token': this.token
         });
-
-        
 
         this.http.get( `${ URL }/user/`,{ headers })
         .subscribe( resp => {

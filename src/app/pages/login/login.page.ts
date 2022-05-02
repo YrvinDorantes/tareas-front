@@ -19,15 +19,15 @@ export class LoginPage implements OnInit {
 
 
 loginUser = {
-  email: 'yodc10@gmail.com',
-  password: '3245254'
+  email: '',
+  password: ''
 }
 
 registerUser: Usuario = {
-  email: 'test10@gmail.com',
-  password: '123456',
-  nombre: 'test10',
-  avatar: 'av-1.png'
+  email: '',
+  password: '',
+  nombre: '',
+  avatar: ''
 };
 
   constructor( private usuarioService: UsuarioService,
@@ -63,7 +63,11 @@ registerUser: Usuario = {
 
     const valido = await this.usuarioService.registro(this.registerUser)
 
+    console.log(valido);
+
     if (valido){
+
+      console.log("Entra al valido")
       this.navCtrl.navigateRoot('/main/tabs/tab1', {animated: true});
     }else{
         this.uiService.alertaInformativa('Ese correo eléctronico ya existe.');

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController,  NavController } from '@ionic/angular';
 import { Task } from 'src/app/interfaces/interfaces';
@@ -12,6 +12,7 @@ import { TasksService } from 'src/app/services/tasks.service';
 export class UpdateTaskComponent implements OnInit {
 
   @Input() task: Task = {};
+  @Output() deleteEventInstanceEvent: EventEmitter<any> = new EventEmitter<any>();
 
 
   constructor(private tasksService: TasksService,
@@ -26,7 +27,6 @@ export class UpdateTaskComponent implements OnInit {
   }
 
   async updateTask(){
-    console.log(this.task);
     const actualizado = await this.tasksService.updateTask(this.task,this.task._id);
     this.navCtrl.navigateRoot('/main/tabs/tab1', {animated: true});
     this.closeModel();

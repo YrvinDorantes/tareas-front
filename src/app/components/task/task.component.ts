@@ -18,22 +18,16 @@ export class TaskComponent implements OnInit {
   
 
 
-  taskItem = {
-    titulo: '',
-    subtitulo: '' ,
-    prioridad: '',
-    categoria: '',
-    estatus: '',
-    dateTask: ''
-  }
-
-
   constructor(public modalCtrl: ModalController,
               private uiService: UiServiceService,
               private navCtrl: NavController,
               private tasksService: TasksService) { }
 
-  ngOnInit() {}
+  ngOnInit(
+  ) {
+    
+
+  }
 
  async deleteTask() {
 

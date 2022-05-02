@@ -29,15 +29,6 @@
 
 
    <ion-item>
-    <ion-label >Estatus</ion-label>
-    <ion-select [(ngModel)]="task.estatus">
-      <ion-select-option value="Completado">Completado</ion-select-option>
-      <ion-select-option value="Cancelado">Cancelar</ion-select-option>
-     </ion-select>
-  </ion-item>
-
-
-   <ion-item>
     <ion-icon name="calendar-outline"slot="start"></ion-icon>
     <ion-label >Fecha </ion-label>
     <ion-datetime  [(ngModel)]="task.dateTask" displayFormat="D MMM YYYY H:mm"></ion-datetime>
@@ -47,7 +38,7 @@
    
 
    <ion-button (click)="updateTask()"
-                
+                [disabled]="task.titulo.length < 1"
                 class="ion-margin" expand="block">Actualizar Tarea</ion-button>
 
   </ion-card>
