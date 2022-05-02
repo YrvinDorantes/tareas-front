@@ -17,7 +17,7 @@ export class Tab2Page {
     subtitulo: '' ,
     prioridad: '',
     categoria: '',
-    estatus: '',
+    estatus: 'Pendiente',
     dateTask: ''
   }
 

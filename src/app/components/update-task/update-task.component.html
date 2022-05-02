@@ -1,0 +1,55 @@
+<ion-header  no-border>
+  <ion-toolbar>
+
+    <ion-icon (click)="closeModel()" slot="end" name="close"></ion-icon>
+    <ion-title>
+      Actualizar Tarea
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-card class="ion-align-self-center" >
+    <ion-item>
+      <ion-textarea  [(ngModel)]="task.titulo"  placeholder="Escribe título de la tarea">  </ion-textarea>
+   </ion-item>
+ 
+    <ion-item>
+      <ion-textarea [(ngModel)]="task.subtitulo" placeholder="Notas"></ion-textarea>
+   </ion-item>
+ 
+   <ion-item>
+     <ion-label >Prioridad</ion-label>
+     <ion-select [(ngModel)]="task.prioridad">
+       <ion-select-option value="Baja">Baja</ion-select-option>
+       <ion-select-option value="Media">Media</ion-select-option>
+       <ion-select-option value="Alta" selected>Alta</ion-select-option>
+      </ion-select>
+   </ion-item>
+
+
+   <ion-item>
+    <ion-label >Estatus</ion-label>
+    <ion-select [(ngModel)]="task.estatus">
+      <ion-select-option value="Completado">Completado</ion-select-option>
+      <ion-select-option value="Cancelado">Cancelar</ion-select-option>
+     </ion-select>
+  </ion-item>
+
+
+   <ion-item>
+    <ion-icon name="calendar-outline"slot="start"></ion-icon>
+    <ion-label >Fecha </ion-label>
+    <ion-datetime  [(ngModel)]="task.dateTask" displayFormat="D MMM YYYY H:mm"></ion-datetime>
+  </ion-item>
+
+
+   
+
+   <ion-button (click)="updateTask()"
+                
+                class="ion-margin" expand="block">Actualizar Tarea</ion-button>
+
+  </ion-card>
+ 
+ </ion-content>

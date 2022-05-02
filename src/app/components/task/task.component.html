@@ -7,6 +7,9 @@
     
 
     <ion-label>
+      <ion-icon *ngIf="task.estatus === 'Pendiente'" color="danger" size="small" name="ellipse"></ion-icon>
+      <ion-icon *ngIf="task.estatus === 'Completado'" color="success" size="small" name="ellipse"></ion-icon>
+      <h3>{{task.estatus}}</h3>
       <h3>{{ task.titulo }}</h3>
       <h5>{{ task.subtitulo }}</h5>
       <h6> {{ task.created }} </h6>
@@ -16,13 +19,16 @@
   
 
 
-  <ion-item lines="none">
-    <ion-icon slot="end" name="trash"></ion-icon>
-
+  <ion-item lines="none" >
+    
+      <ion-icon button (click)="deleteTask(task)" slot="end" name="trash-outline"></ion-icon>
+  
     
 
 
-    <ion-icon  slot="end" name="create"></ion-icon>
+    <ion-icon (click)="updateTask( task )"  slot="end" name="create"></ion-icon>
+
+    
     <ion-icon slot="end" name="checkmark"></ion-icon>
   </ion-item>
 

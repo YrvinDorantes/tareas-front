@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Task } from 'src/app/interfaces/interfaces';
 import { TasksService } from '../../services/tasks.service';
 
@@ -13,7 +14,8 @@ export class Tab1Page implements OnInit {
 
   habilitado = true;
 
-  constructor( private tasksService: TasksService) {}
+  constructor( private tasksService: TasksService,
+              private modalCtrl: ModalController) {}
 
 
   ngOnInit() {

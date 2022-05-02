@@ -5,22 +5,33 @@ import { TaskComponent } from './task/task.component';
 
 import { IonicModule } from '@ionic/angular';
 import { AvatarSelectorComponent } from './avatar-selector/avatar-selector.component';
+import { UpdateTaskComponent } from './update-task/update-task.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 
 @NgModule({
+  entryComponents:[
+    UpdateTaskComponent,
+    TaskComponent,
+  ],
   declarations: [
     TasksComponent,
     TaskComponent,
-    AvatarSelectorComponent
+    AvatarSelectorComponent,
+    UpdateTaskComponent
   ],
   exports:[
     TasksComponent,
-    AvatarSelectorComponent
+    TaskComponent,
+    AvatarSelectorComponent,
+    UpdateTaskComponent
   ],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
+    FormsModule
   ]
 })
 export class ComponentsModule { }

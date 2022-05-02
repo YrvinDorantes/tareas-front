@@ -16,18 +16,23 @@ export class TasksService {
   nuevoTask = new EventEmitter<Task>();
 
 
+
   constructor( private http: HttpClient,
               private usuarioService: UsuarioService) { }
 
+ 
+  
   getTasks( pull: boolean = false){
-
+    const headers = new HttpHeaders({
+      'x-token': this.usuarioService.token
+    });
     if (pull){
       this.paginaTasks = 0;
     }
 
     this.paginaTasks ++;
 
-    return this.http.get<RespuestaTasks>( `${ URL }/tasks/?pagina=${ this.paginaTasks }`);
+    return this.http.get<RespuestaTasks>( `${ URL }/tasks/?pagina=${ this.paginaTasks }`,{headers});
   }
 
     crearTask(task){
@@ -44,5 +49,19 @@ export class TasksService {
         });
 
         
+    }
+
+    updateTask(task,id:string){
+      const headers = new HttpHeaders({
+        'x-token': this.usuarioService.token
+      });
+
+      return new Promise (resolve => {
+        this.http.put( `${ URL }/tasks/${ id }`,task ,{headers})
+        .subscribe( resp => {
+          this.nuevoTask.emit( resp['task']);
+          resolve(true);
+        });
+    });
     }
 }
